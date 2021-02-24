@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Alexandre Sobolevski</title>
+  <meta name="description" content="Alexandre Sobolevski">
+  <link rel="import" href="content/articles/on-choices-with-large-uncertainties.html">
+  <link rel="stylesheet" href="src/styles.css">
+  <link rel="icon" type="image/png" href="assets/images/profile-picture.png"/>
+</head>
+
+<body>
+
+  <script src="https://kit.fontawesome.com/2f8e8c9f01.js" crossorigin="anonymous"></script>
+  <script src="https://sealstats.alexandresobolevski.com"></script>
+
+	<header>
+		<nav id="navigation_bar">
+      <a id="about">About</a>
+      <a id="products">Featured products 🖤</a>
+    </nav>
+  </header>
+
+  <div id="article"></div>
+
+  <section id="section_about">
+    <img src="assets/images/profile-picture.png"></img>
+    <h1>Alexandre Sobolevski</h1>
+    Hi. I am Alexandre and I build software products. 
+    My areas of expertise are web services and data analytics.
+  </section>
+  
+  <section id="section_articles">
+    <div w3-include-html="test.html"></div> 
+  </section>
+
+  <section id="section_products">
+    This is not an exhaustive list of all the things I have built. 
+    This is a short list of publicly accessible products that 
+    I would like to bring attention to and showcase.
+    <br/>
+    <br/>
+    <br/>
+    <div>
+      <a class="underlined" target="_blank" href="https://www.sealstats.com">Sealstats</a>
+      - the best place to view hockey scores and stats.
+    </div>
+    <br/>
+    <div>
+      <a class="underlined" target="_blank" href="https://www.chatler.io">Chatler</a>
+      - in-seat delivery with Messenger, increases revenue per seat for venues.
+    </div>
+    <br/>
+    <div>
+      <a class="underlined" target="_blank" href="https://github.com/plotly/falcon">Plotly Database Connector (Falcon)</a>
+      - connects your Plotly web interface to several external databases.
+    </div>
+  </section>
+
+  <div class="footer">
+    <a target="_blank" href="https://twitter.com/AlexandreSobo/">
+      <i class="fab fa-twitter fa-2x"></i>
+    </a>      
+    <a target="_blank" href="https://www.linkedin.com/in/alexandresobolevski/">
+      <i class="fab fa-linkedin fa-2x"></i>
+    </a>     
+    <a target="_blank" href="https://alexandresobolevski.substack.com/">
+      <i class="far fa-newspaper fa-2x"></i>
+    </a>
+    <a target="_blank" href="https://www.goodreads.com/review/list/50991235?order=d&shelf=read&sort=date_read&view=table">
+      <i class="fab fa-goodreads fa-2x"></i>
+    </a>     
+  </div>
+
+  <script>
+    function updateNavigationBarSelectedSection(newSectionName) {
+      Array.from(document.getElementById('navigation_bar').children).forEach((child) => {
+        if (child.id == newSectionName) {
+          child.style.borderBottom = '2px solid #212121'
+        } else {
+          child.style.borderBottomStyle = 'none'
+        }
+      })
+      Array.from(document.querySelectorAll('section')).forEach((section) => {
+        if (`section_${newSectionName}` == section.id) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      })
+    }
+
+    Array.from(document.getElementById('navigation_bar').children).forEach((child) => {
+      child.addEventListener(
+        'click',
+        event => updateNavigationBarSelectedSection(event.target.id)
+      )
+    })
+
+    updateNavigationBarSelectedSection('about')
+  </script>
+</body>
+</html>
